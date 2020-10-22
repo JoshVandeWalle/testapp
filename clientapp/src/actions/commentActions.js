@@ -12,7 +12,7 @@ export const fetchAll = () => dispatch => {
     api.comment().fetchAll()
     .then(
         response => {
-            if (response.code == 200){
+            if (response.data.code == 200){
                 dispatch({
                     type: ACTION_TYPES.FETCH_ALL,
                     payload: response.data.data
@@ -37,8 +37,8 @@ export const create = (data, onSuccess) => dispatch => {
             type: ACTION_TYPES.CREATE,
             payload: res.data
         })
-        let serverValidationPassed = res.data.data.length ? true : false
-        onSuccess(serverValidationPassed)
+        //let serverValidationPassed = res.data.data.length ? true : false
+        onSuccess()
     })
     .catch(err => console.log(err))
 }
@@ -62,8 +62,9 @@ export const update = (data, onSuccess) => dispatch => {
             type: ACTION_TYPES.UPDATE,
             payload: res.data
         })
-        let serverValidationPassed = res.data.data.length ? true : false
-        onSuccess(serverValidationPassed)
+        //let serverValidationPassed = res.data.data.length ? true : false
+        onSuccess()
+        //onSuccess(serverValidationPassed)
     })
     .catch(err => console.log(err))
 }

@@ -1,9 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {store} from "./actions/store";
+import {Provider} from "react-redux";
+import Comment from './components/Comment';
+import {Container} from "@material-ui/core";
+import {ToastProvider} from "react-toast-notifications";
 
 function App() {
-  return (
+  /*return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -20,6 +25,15 @@ function App() {
         </a>
       </header>
     </div>
+  );*/
+  return (
+    <Provider store={store}>
+      <ToastProvider autoDismiss={true}>
+        <Container maxWidth="lg">
+          <Comment />
+        </Container>
+      </ToastProvider>
+    </Provider>
   );
 }
 
